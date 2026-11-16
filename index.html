@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>María del Rocío Pérez García | Currículum</title>
+  <style>
+    :root {
+      /* Fondo oscuro de la barra lateral. */
+      --color-sidebar: #18242E;
+      /* Fondo blanco de la columna principal. */
+      --color-paper: #FFFFFF;
+      /* Acento para destacar títulos y elementos importantes. */
+      --color-accent: #4A90B8;
+      /* Texto principal sobre el fondo blanco. */
+      --color-text: #222222;
+      /* Texto secundario sobre el fondo blanco. */
+      --color-muted: #555555;
+      /* Texto principal sobre el fondo oscuro. */
+      --color-sidebar-text: #FFFFFF;
+      /* Texto secundario y fechas sobre el fondo oscuro. */
+      --color-sidebar-muted: #D0D5D9;
+      /* Divisores del área principal. */
+      --color-rule: #CCCCCC;
+      /* Divisores de la barra lateral. */
+      --color-sidebar-rule: #46535E;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--color-paper);
+      color: var(--color-text);
+      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      font-size: 15px;
+      line-height: 1.65;
+    }
+
+    .cv {
+      display: grid;
+      grid-template-columns: minmax(250px, 35%) minmax(0, 65%);
+      min-height: 100vh;
+      width: 100%;
+    }
+
+    .main {
+      grid-column: 2;
+      grid-row: 1;
+      padding: clamp(36px, 7vw, 88px) clamp(28px, 7vw, 88px);
+    }
+
+    .sidebar {
+      grid-column: 1;
+      grid-row: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 48px clamp(24px, 4vw, 52px) 28px;
+      background: var(--color-sidebar);
+      color: var(--color-sidebar-text);
+    }
+
+    .portrait {
+      display: block;
+      width: min(100%, 220px);
+      aspect-ratio: 1;
+      margin: 0 auto 42px;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .name {
+      margin: 0;
+      font-size: clamp(2rem, 4.2vw, 3.2rem);
+      font-weight: 500;
+      letter-spacing: 0.075em;
+      line-height: 1.2;
+      text-transform: uppercase;
+    }
+
+    .subtitle {
+      margin: 10px 0 30px;
+      color: var(--color-accent);
+      font-size: 1.12rem;
+      font-weight: 600;
+    }
+
+    .contact-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px 24px;
+      margin: 0 0 52px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .contact-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      min-width: 0;
+      color: var(--color-muted);
+      overflow-wrap: anywhere;
+    }
+
+    .contact-list a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .contact-list a:hover,
+    .contact-list a:focus-visible {
+      color: var(--color-accent);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .contact-icon {
+      flex: 0 0 17px;
+      width: 17px;
+      height: 17px;
+      margin-top: 4px;
+      color: var(--color-accent);
+    }
+
+    .section {
+      margin: 0 0 38px;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin: 0 0 20px;
+      font-size: 0.93rem;
+      font-weight: 600;
+      letter-spacing: 0.13em;
+      line-height: 1.4;
+      text-transform: uppercase;
+    }
+
+    .section-title::after {
+      height: 1px;
+      flex: 1;
+      background: var(--color-rule);
+      content: "";
+    }
+
+    .sidebar .section-title::after {
+      background: var(--color-sidebar-rule);
+    }
+
+    .sidebar .section {
+      margin-bottom: 34px;
+    }
+
+    .sidebar .section-title {
+      color: var(--color-sidebar-text);
+    }
+
+    .sidebar p,
+    .sidebar li,
+    .sidebar .detail {
+      color: var(--color-sidebar-muted);
+    }
+
+    .profile-copy {
+      max-width: 64ch;
+      margin: 0;
+      color: var(--color-muted);
+    }
+
+    .entry {
+      margin: 0 0 22px;
+    }
+
+    .entry:last-child {
+      margin-bottom: 0;
+    }
+
+    .entry-heading {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .entry-title {
+      margin: 0;
+      font-size: 1rem;
+      font-weight: 700;
+      line-height: 1.5;
+    }
+
+    .detail {
+      margin: 2px 0 0;
+      color: var(--color-muted);
+    }
+
+    .sidebar .detail {
+      font-size: 0.92rem;
+    }
+
+    .skill-list,
+    .other-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .skill-list li,
+    .other-list li {
+      margin: 0 0 12px;
+    }
+
+    .skill-list li:last-child,
+    .other-list li:last-child {
+      margin-bottom: 0;
+    }
+
+    .skill-label {
+      display: block;
+      margin-bottom: 2px;
+      color: var(--color-sidebar-text);
+      font-weight: 600;
+    }
+
+    .other-label {
+      display: block;
+      margin-bottom: 2px;
+      color: var(--color-text);
+      font-weight: 600;
+    }
+
+    .sidebar .other-label {
+      color: var(--color-sidebar-text);
+    }
+
+    .sidebar-footer {
+      margin-top: auto;
+      padding-top: 24px;
+      color: var(--color-sidebar-muted);
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 760px) {
+      .cv {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .main {
+        padding: 40px 24px 12px;
+      }
+
+      .sidebar {
+        padding: 34px 24px 24px;
+      }
+
+      .portrait {
+        width: min(58vw, 190px);
+        margin-bottom: 30px;
+      }
+
+      .contact-list {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        margin-bottom: 38px;
+      }
+
+      .section {
+        margin-bottom: 32px;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .main {
+        padding-right: 20px;
+        padding-left: 20px;
+      }
+
+      .sidebar {
+        padding-right: 20px;
+        padding-left: 20px;
+      }
+
+      .name {
+        font-size: 1.8rem;
+      }
+    }
+
+    @media print {
+      .cv {
+        grid-template-columns: 35% 65%;
+      }
+
+      .main {
+        padding: 36px;
+      }
+
+      .sidebar {
+        padding: 34px 26px 24px;
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+      }
+
+      .section,
+      .entry {
+        break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="cv">
+    <main class="main">
+      <header>
+        <h1 class="name">María del Rocío Pérez García</h1>
+        <p class="subtitle">Estudiante de Trabajo Social</p>
+
+        <!-- ===== SECCIÓN: CONTACTO ===== -->
+        <section class="section" aria-label="Contacto">
+          <ul class="contact-list">
+            <li>
+              <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+                <rect x="3" y="5" width="18" height="14" rx="1"></rect>
+                <path d="m4 7 8 6 8-6"></path>
+              </svg>
+              <a href="mailto:maperempleo@gmail.com">maperempleo@gmail.com</a>
+            </li>
+          </ul>
+        </section>
+        <!-- ===== FIN: CONTACTO ===== -->
+      </header>
+
+      <!-- ===== SECCIÓN: SOBRE MÍ ===== -->
+      <section class="section" aria-labelledby="sobre-mi">
+        <h2 class="section-title" id="sobre-mi">Sobre mí</h2>
+        <p class="profile-copy">Soy una persona responsable y ordenada, con ganas de trabajar. Me adapto fácilmente a las adversidades y sé trabajar en grupo. Buscando mi primera experiencia laboral.</p>
+      </section>
+      <!-- ===== FIN: SOBRE MÍ ===== -->
+
+      <!-- ===== SECCIÓN: EXPERIENCIA ===== -->
+      <section class="section" aria-labelledby="experiencia">
+        <h2 class="section-title" id="experiencia">Experiencia</h2>
+        <p class="profile-copy">En búsqueda de mi primera experiencia laboral.</p>
+      </section>
+      <!-- ===== FIN: EXPERIENCIA ===== -->
+
+      <!-- ===== SECCIÓN: FORMACIÓN ===== -->
+      <section class="section" aria-labelledby="formacion">
+        <h2 class="section-title" id="formacion">Formación</h2>
+        <div class="entry">
+          <h3 class="entry-title">Grado en Trabajo Social</h3>
+          <p class="detail">Cursando · Universidad de Cádiz</p>
+        </div>
+        <div class="entry">
+          <h3 class="entry-title">Bachillerato de Ciencias Sociales</h3>
+          <p class="detail">2021–2023 · IES Vega del Guadalete</p>
+        </div>
+      </section>
+      <!-- ===== FIN: FORMACIÓN ===== -->
+
+      <!-- ===== SECCIÓN: OTROS ===== -->
+      <section class="section" aria-labelledby="otros">
+        <h2 class="section-title" id="otros">Otros</h2>
+        <ul class="other-list">
+          <li>
+            <span class="other-label">Voluntariado</span>
+            Ocho meses dando refuerzo educativo en Fundación Mornese.
+          </li>
+          <li>
+            <span class="other-label">Movilidad</span>
+            Permiso de circulación B y coche propio.
+          </li>
+          <li>
+            <span class="other-label">Edad</span>
+            21 años.
+          </li>
+        </ul>
+      </section>
+      <!-- ===== FIN: OTROS ===== -->
+    </main>
+
+    <aside class="sidebar" aria-label="Información adicional">
+      <img class="portrait" src="imagenes/foto.jpg" alt="Foto de perfil de María del Rocío Pérez García">
+
+      <!-- ===== SECCIÓN: HABILIDADES ===== -->
+      <section class="section" aria-labelledby="habilidades">
+        <h2 class="section-title" id="habilidades">Habilidades</h2>
+        <ul class="skill-list">
+          <li>
+            <span class="skill-label">Herramientas de software</span>
+            Procesador de texto y presentación de diapositivas.
+          </li>
+          <li>
+            <span class="skill-label">Idiomas</span>
+            Español nativo e inglés B1 de Cambridge.
+          </li>
+          <li>
+            <span class="skill-label">Competencias personales</span>
+            Responsabilidad, orden, adaptación a las adversidades y trabajo en grupo.
+          </li>
+        </ul>
+      </section>
+      <!-- ===== FIN: HABILIDADES ===== -->
+
+      <footer class="sidebar-footer">Currículum vitae</footer>
+    </aside>
+  </div>
+</body>
+</html>
